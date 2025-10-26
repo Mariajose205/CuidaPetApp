@@ -19,4 +19,7 @@ interface UsuarioDao {
 
     @Query("SELECT * FROM usuarios WHERE id = :id LIMIT 1")
     suspend fun obtenerUsuarioPorId(id: Int): Usuario?
+
+    @Query("UPDATE usuarios SET fotoUri = :uri WHERE id = :id")
+    suspend fun actualizarFoto(id: Int, uri: String)
 }

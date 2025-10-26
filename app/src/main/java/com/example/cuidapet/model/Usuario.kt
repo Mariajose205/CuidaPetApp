@@ -9,6 +9,6 @@ data class Usuario(
     val fechaNacimiento: String,
     val correo: String,
     val contrasena: String,
-    var fotoUri: String? = null,
+    var fotoUri: String? = null, // <-- CAMPO AÑADIDO
     @PrimaryKey(autoGenerate = true) val id: Int = 0
 )

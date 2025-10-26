@@ -12,7 +12,12 @@ class UsuarioViewModel(application: Application) : AndroidViewModel(application)
 
     private val usuarioDao = CuidaPetDataBase.getDatabase(application).usuarioDao()
 
-    fun registrarUsuario(nombre: String, fechaNacimiento: String, correo: String, contrasena: String) {
+    fun registrarUsuario(
+        nombre: String,
+        fechaNacimiento: String,
+        correo: String,
+        contrasena: String
+    ) {
         viewModelScope.launch {
             val nuevoUsuario = Usuario(nombre, fechaNacimiento, correo, contrasena)
             usuarioDao.registrar(nuevoUsuario)
@@ -28,11 +33,14 @@ class UsuarioViewModel(application: Application) : AndroidViewModel(application)
 
     fun actualizarFotoUsuario(idUsuario: Int, fotoUri: Uri) {
         viewModelScope.launch {
+            usuarioDao.actualizarFoto(idUsuario, fotoUri.toString())
+        }
+    }
+
+    fun obtenerUsuarioPorId(idUsuario: Int, onResult: (Usuario?) -> Unit) {
+        viewModelScope.launch {
             val usuario = usuarioDao.obtenerUsuarioPorId(idUsuario)
-            usuario?.let {
-                it.fotoUri = fotoUri.toString()
-                usuarioDao.actualizar(it)
-            }
+            onResult(usuario)
         }
     }
 }
