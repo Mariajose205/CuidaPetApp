@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8F5E9">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📋 Recomendaciones CuidaPet"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Recomendaciones para perros -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐶 Perros"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#388E3C"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Saca a pasear a tu perro todos los días para estimular su mente y cuerpo.\n• Proporciónale agua fresca y comida balanceada.\n• Cepilla su pelaje regularmente y visita al veterinario cada 6 meses."
+            android:textSize="16sp"
+            android:textColor="#4CAF50"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Recomendaciones para gatos -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐱 Gatos"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#388E3C"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Mantén su caja de arena limpia y en un lugar tranquilo.\n• Juega con él usando juguetes interactivos para evitar el estrés.\n• Ofrece rascadores para cuidar sus uñas y evitar daños en muebles."
+            android:textSize="16sp"
+            android:textColor="#4CAF50"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Recomendaciones para peces -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐟 Peces"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#388E3C"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Mantén el agua del acuario limpia y con la temperatura adecuada.\n• No sobrealimentes: una vez al día es suficiente.\n• Usa filtros y revisa el pH del agua regularmente."
+            android:textSize="16sp"
+            android:textColor="#4CAF50"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Recomendaciones para conejos -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐰 Conejos"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#388E3C"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Proporciónales heno fresco todos los días: es esencial para su digestión.\n• Crea un espacio seguro donde puedan saltar y explorar.\n• Cepíllalos con frecuencia y revisa sus dientes regularmente."
+            android:textSize="16sp"
+            android:textColor="#4CAF50"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/btnVolverHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🏡 Volver al inicio"
+            android:backgroundTint="#A5D6A7"
+            android:textColor="#2E7D32" />
+    </LinearLayout>
+</ScrollView>

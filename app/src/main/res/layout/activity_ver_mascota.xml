@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8F5E9">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐾 Mascota registrada"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:layout_marginBottom="24dp" />
+
+        <ImageView
+            android:id="@+id/imgMascotaVista"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_pet_placeholder"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:id="@+id/tvNombreMascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐶 Nombre: "
+            android:textSize="18sp"
+            android:textColor="#388E3C"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvFechaMascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📅 Nacimiento: "
+            android:textSize="18sp"
+            android:textColor="#388E3C"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvRazaMascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐾 Raza: "
+            android:textSize="18sp"
+            android:textColor="#388E3C"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/btnVolverHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🏡 Volver al inicio"
+            android:backgroundTint="#A5D6A7"
+            android:textColor="#2E7D32" />
+    </LinearLayout>
+</ScrollView>
