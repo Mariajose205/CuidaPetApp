@@ -27,7 +27,7 @@
         <activity android:name=".view.PerfilActivity" android:exported="false"/>
         <activity android:name=".view.RegistrarMascotaActivity" android:exported="false"/>
         <activity android:name=".view.RecomendacionesActivity" android:exported="false"/>
-        <activity android:name=".view.VerMascotaEjemploActivity" android:exported="false"/>
+        <activity android:name=".view.VerMascotaActivity" android:exported="false"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

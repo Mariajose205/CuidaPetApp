@@ -14,12 +14,18 @@ class HomeActivity : ComponentActivity() {
         setContentView(R.layout.activity_home)
 
         val btnRegistrarMascota = findViewById<Button>(R.id.btnRegistrarMascota)
+        val btnTuMascota = findViewById<Button>(R.id.btnTuMascota) // ← NUEVO BOTÓN
         val btnRecomendaciones = findViewById<Button>(R.id.btnRecomendaciones)
         val btnPerfil = findViewById<Button>(R.id.btnPerfil)
         val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
 
         btnRegistrarMascota.setOnClickListener {
             val intent = Intent(this, RegistrarMascotaActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnTuMascota.setOnClickListener {
+            val intent = Intent(this, VerMascotaActivity::class.java)
             startActivity(intent)
         }
 

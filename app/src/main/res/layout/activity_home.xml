@@ -47,6 +47,15 @@
             android:layout_marginBottom="16dp" />
 
         <Button
+            android:id="@+id/btnTuMascota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🐶 Tu Mascota"
+            android:backgroundTint="#66BB6A"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp" />
+
+        <Button
             android:id="@+id/btnRecomendaciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,6 +72,8 @@
             android:backgroundTint="#C8E6C9"
             android:textColor="#2E7D32"
             android:layout_marginBottom="16dp" />
+
+
 
         <Button
             android:id="@+id/btnCerrarSesion"

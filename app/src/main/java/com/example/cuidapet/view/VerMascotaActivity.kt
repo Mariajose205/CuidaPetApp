@@ -1,6 +1,5 @@
 package com.example.cuidapet.view
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
@@ -15,27 +14,30 @@ class VerMascotaActivity : ComponentActivity() {
         setContentView(R.layout.activity_ver_mascota)
 
         val nombre = intent.getStringExtra("nombre")
-        val fecha = intent.getStringExtra("fecha")
+        val edad = intent.getStringExtra("edad")
         val raza = intent.getStringExtra("raza")
+        val peso = intent.getStringExtra("peso")
         val fotoUri = intent.getStringExtra("fotoUri")
 
         val tvNombre = findViewById<TextView>(R.id.tvNombreMascota)
-        val tvFecha = findViewById<TextView>(R.id.tvFechaMascota)
+        val tvEdad = findViewById<TextView>(R.id.tvEdadMascota)
         val tvRaza = findViewById<TextView>(R.id.tvRazaMascota)
+        val tvPeso = findViewById<TextView>(R.id.tvPesoMascota)
         val imgMascota = findViewById<ImageView>(R.id.imgMascotaVista)
-        val btnVolverHome = findViewById<Button>(R.id.btnVolverHome)
+        val btnVolver = findViewById<Button>(R.id.btnVolverHome)
 
         tvNombre.text = "🐶 Nombre: $nombre"
-        tvFecha.text = "📅 Nacimiento: $fecha"
+        tvEdad.text = "📅 Edad: $edad"
         tvRaza.text = "🐾 Raza: $raza"
+        tvPeso.text = "⚖️ Peso: $peso"
 
         fotoUri?.let {
-            imgMascota.setImageURI(Uri.parse(it))
+            if (it.isNotEmpty()) {
+                imgMascota.setImageURI(Uri.parse(it))
+            }
         }
 
-        btnVolverHome.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+        btnVolver.setOnClickListener {
             finish()
         }
     }

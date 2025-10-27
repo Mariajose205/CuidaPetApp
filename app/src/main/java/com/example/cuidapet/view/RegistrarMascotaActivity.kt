@@ -2,6 +2,7 @@ package com.example.cuidapet.view
 
 import android.Manifest
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -28,16 +29,19 @@ class RegistrarMascotaActivity : ComponentActivity() {
 
     private lateinit var imgMascota: ImageView
     private var fotoUri: Uri? = null
+    private var idUsuario: Int = -1
 
     private val requestCameraPermission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
         if (isGranted) tomarFoto() else Toast.makeText(this, "Permiso denegado", Toast.LENGTH_SHORT).show()
     }
+
     private val takePicturePreview = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
-        if (bitmap != null) {
-            fotoUri = saveBitmapToInternalStorage(bitmap)
+        bitmap?.let {
+            fotoUri = saveBitmapToInternalStorage(it)
             imgMascota.setImageURI(fotoUri)
         }
     }
+
     private val selectImage = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         uri?.let {
             try {
@@ -53,6 +57,9 @@ class RegistrarMascotaActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrar_mascota)
+
+        val sharedPref = getSharedPreferences("CuidaPetPrefs", Context.MODE_PRIVATE)
+        idUsuario = sharedPref.getInt("ID_USUARIO", -1)
 
         imgMascota = findViewById(R.id.imgMascota)
         val etNombreMascota = findViewById<EditText>(R.id.etNombreMascota)
@@ -72,8 +79,18 @@ class RegistrarMascotaActivity : ComponentActivity() {
 
             if (nombre.isEmpty() || edad.isEmpty() || raza.isEmpty() || peso.isEmpty()) {
                 Toast.makeText(this, "Faltan campos por completar", Toast.LENGTH_SHORT).show()
+            } else if (idUsuario == -1) {
+                Toast.makeText(this, "Usuario no identificado", Toast.LENGTH_SHORT).show()
             } else {
-                val mascota = Mascota(nombre = nombre, edad = edad, raza = raza, peso = peso, fotoUri = fotoUri.toString())
+                val mascota = Mascota(
+                    nombre = nombre,
+                    edad = edad,
+                    raza = raza,
+                    peso = peso,
+                    fotoUri = fotoUri?.toString(),
+                    idUsuario = idUsuario
+                )
+
                 lifecycleScope.launch {
                     val mascotaDao = CuidaPetDataBase.getDatabase(applicationContext).mascotaDao()
                     mascotaDao.insertar(mascota)
@@ -113,9 +130,9 @@ class RegistrarMascotaActivity : ComponentActivity() {
             val imagesDir = File(filesDir, "pet_images")
             if (!imagesDir.exists()) imagesDir.mkdir()
             val file = File(imagesDir, "mascota_${System.currentTimeMillis()}.jpg")
-            val stream = FileOutputStream(file)
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, stream)
-            stream.close()
+            FileOutputStream(file).use { stream ->
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 90, stream)
+            }
             Uri.fromFile(file)
         } catch (e: IOException) {
             Log.e("RegistrarMascota", "Error al guardar bitmap", e)
