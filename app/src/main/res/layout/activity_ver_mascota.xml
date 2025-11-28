@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4F0">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐾 Ficha de tu Mascota"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:layout_marginBottom="24dp" />
+
+        <ImageView
+            android:id="@+id/imgMascotaVista"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_pet_placeholder"
+            android:background="@drawable/circle_background"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:id="@+id/tvNombreMascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐶 Nombre: Cargando..."
+            android:textSize="18sp"
+            android:textColor="#388E3C"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvEdadMascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎂 Edad: Cargando..."
+            android:textSize="18sp"
+            android:textColor="#388E3C"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvRazaMascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🦴 Raza: Cargando..."
+            android:textSize="18sp"
+            android:textColor="#388E3C"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvPesoMascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚖️ Peso: Cargando..."
+            android:textSize="18sp"
+            android:textColor="#388E3C"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/btnVolverHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🏡 Volver al inicio"
+            android:backgroundTint="#66BB6A"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</ScrollView>

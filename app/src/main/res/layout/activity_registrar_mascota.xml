@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4F0"
+    tools:context=".view.RegistrarMascotaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐾 Registrar Nueva Mascota"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:layout_marginBottom="24dp" />
+
+        <ImageView
+            android:id="@+id/imgMascota"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_pet_placeholder"
+            android:background="@drawable/circle_background"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnSubirFotoMascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📷 Subir foto"
+            android:backgroundTint="#A5D6A7"
+            android:textColor="#2E7D32"
+            android:layout_marginBottom="24dp" />
+
+        <EditText
+            android:id="@+id/etNombreMascota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre de la mascota"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/etEdadMascota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Edad (ej: 5 años)"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/etRazaMascota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Raza"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/etPesoMascota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Peso (ej: 10 kg)"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/btnGuardarMascota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GUARDAR MASCOTA"
+            android:backgroundTint="#66BB6A"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+</ScrollView>
