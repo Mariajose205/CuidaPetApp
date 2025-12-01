@@ -18,7 +18,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.cuidapet.R
+import com.example.cuidapet.data.CuidaPetDataBase
 import com.example.cuidapet.viewmodel.UsuarioViewModel
+import com.example.cuidapet.viewmodel.UsuarioViewModelFactory
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -60,7 +62,10 @@ class PerfilActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
 
-        viewModel = ViewModelProvider(this)[UsuarioViewModel::class.java]
+        val database = CuidaPetDataBase.getDatabase(application)
+        val factory = UsuarioViewModelFactory(database.usuarioDao())
+        viewModel = ViewModelProvider(this, factory).get(UsuarioViewModel::class.java)
+
         imgPerfil = findViewById(R.id.imgPerfil)
 
         findViewById<Button>(R.id.btnCambiarFoto).setOnClickListener { mostrarDialogoSeleccion() }
@@ -73,16 +78,29 @@ class PerfilActivity : ComponentActivity() {
         val sharedPref = getSharedPreferences("CuidaPetPrefs", Context.MODE_PRIVATE)
         idUsuario = sharedPref.getInt("ID_USUARIO", -1)
 
-        findViewById<TextView>(R.id.tvNombre).text = "Nombre: ${sharedPref.getString("NOMBRE_USUARIO", "...")}"
-        findViewById<TextView>(R.id.tvCorreo).text = "Correo: ${sharedPref.getString("CORREO_USUARIO", "...")}"
-        findViewById<TextView>(R.id.tvFechaNacimiento).text = "📅 Nacimiento: ${sharedPref.getString("FECHA_NACIMIENTO_USUARIO", "...")}"
+        if (idUsuario != -1) {
+            // --- INICIO DE LA MODIFICACIÓN ---
+            // Pedimos el usuario a la base de datos como única fuente de verdad
+            viewModel.obtenerUsuarioPorId(idUsuario) { usuario ->
+                if (usuario != null) {
+                    // Cuando el usuario llega, actualizamos TODA la pantalla
+                    findViewById<TextView>(R.id.tvNombre).text = "Nombre: ${usuario.nombre}"
+                    findViewById<TextView>(R.id.tvCorreo).text = "Correo: ${usuario.correo}"
+                    findViewById<TextView>(R.id.tvFechaNacimiento).text = "📅 Nacimiento: ${usuario.fechaNacimiento}"
 
-        viewModel.obtenerUsuarioPorId(idUsuario) { usuario ->
-            usuario?.fotoUri?.let {
-                imgPerfil.setImageURI(Uri.parse(it))
+                    usuario.fotoUri?.let {
+                        if (it.isNotEmpty()) {
+                            imgPerfil.setImageURI(Uri.parse(it))
+                        }
+                    }
+                } else {
+                    Toast.makeText(this, "Error al cargar el perfil del usuario", Toast.LENGTH_SHORT).show()
+                }
             }
+            // --- FIN DE LA MODIFICACIÓN ---
         }
     }
+
 
     private fun actualizarFotoPerfil(uri: Uri) {
         imgPerfil.setImageURI(uri)

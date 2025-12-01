@@ -1,76 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F4F0">
+    android:background="#E8F5E9"
+    tools:context=".view.VerMascotaActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvMisMascotasTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp"
-        android:gravity="center_horizontal">
+        android:layout_marginTop="32dp"
+        android:text="🐾 Mis Mascotas"
+        android:textColor="#2E7D32"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🐾 Ficha de tu Mascota"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#2E7D32"
-            android:layout_marginBottom="24dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMascotas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:clipToPadding="false"
+        android:paddingBottom="80dp" 
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMisMascotasTitle"
+        tools:listitem="@layout/item_mascota" />
 
-        <ImageView
-            android:id="@+id/imgMascotaVista"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_pet_placeholder"
-            android:background="@drawable/circle_background"
-            android:layout_marginBottom="24dp" />
+    <Button
+        android:id="@+id/btnVolverHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#A5D6A7"
+        android:text="VOLVER AL INICIO"
+        android:textColor="#2E7D32"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/tvNombreMascota"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🐶 Nombre: Cargando..."
-            android:textSize="18sp"
-            android:textColor="#388E3C"
-            android:layout_marginBottom="12dp" />
-
-        <TextView
-            android:id="@+id/tvEdadMascota"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🎂 Edad: Cargando..."
-            android:textSize="18sp"
-            android:textColor="#388E3C"
-            android:layout_marginBottom="12dp" />
-
-        <TextView
-            android:id="@+id/tvRazaMascota"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🦴 Raza: Cargando..."
-            android:textSize="18sp"
-            android:textColor="#388E3C"
-            android:layout_marginBottom="12dp" />
-
-        <TextView
-            android:id="@+id/tvPesoMascota"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="⚖️ Peso: Cargando..."
-            android:textSize="18sp"
-            android:textColor="#388E3C"
-            android:layout_marginBottom="32dp" />
-
-        <Button
-            android:id="@+id/btnVolverHome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="🏡 Volver al inicio"
-            android:backgroundTint="#66BB6A"
-            android:textColor="#FFFFFF" />
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

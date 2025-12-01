@@ -1,16 +1,14 @@
 package com.example.cuidapet.viewmodel
 
-import android.app.Application
 import android.net.Uri
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.cuidapet.data.CuidaPetDataBase
+import com.example.cuidapet.data.UsuarioDao
 import com.example.cuidapet.model.Usuario
 import kotlinx.coroutines.launch
 
-class UsuarioViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val usuarioDao = CuidaPetDataBase.getDatabase(application).usuarioDao()
+class UsuarioViewModel(private val usuarioDao: UsuarioDao) : ViewModel() {
 
     fun registrarUsuario(
         nombre: String,
@@ -42,5 +40,16 @@ class UsuarioViewModel(application: Application) : AndroidViewModel(application)
             val usuario = usuarioDao.obtenerUsuarioPorId(idUsuario)
             onResult(usuario)
         }
+    }
+}
+
+// Fábrica para crear el ViewModel con su dependencia (el DAO)
+class UsuarioViewModelFactory(private val usuarioDao: UsuarioDao) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(UsuarioViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return UsuarioViewModel(usuarioDao) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

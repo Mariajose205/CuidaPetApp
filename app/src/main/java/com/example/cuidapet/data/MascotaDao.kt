@@ -1,5 +1,6 @@
 package com.example.cuidapet.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -12,5 +13,5 @@ interface MascotaDao {
     suspend fun insertar(mascota: Mascota)
 
     @Query("SELECT * FROM mascotas WHERE idUsuario = :idUsuario")
-    suspend fun obtenerMascotasPorUsuario(idUsuario: Int): List<Mascota>
+    fun obtenerMascotasPorUsuario(idUsuario: Int): LiveData<List<Mascota>>
 }

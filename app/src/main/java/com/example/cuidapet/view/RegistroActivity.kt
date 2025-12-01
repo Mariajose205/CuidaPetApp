@@ -6,7 +6,9 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.cuidapet.R
+import com.example.cuidapet.data.CuidaPetDataBase
 import com.example.cuidapet.viewmodel.UsuarioViewModel
+import com.example.cuidapet.viewmodel.UsuarioViewModelFactory
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -18,7 +20,11 @@ class RegistroActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
 
-        viewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
+        // --- INICIO DE LA MODIFICACIÓN ---
+        val database = CuidaPetDataBase.getDatabase(application)
+        val factory = UsuarioViewModelFactory(database.usuarioDao())
+        viewModel = ViewModelProvider(this, factory).get(UsuarioViewModel::class.java)
+        // --- FIN DE LA MODIFICACIÓN ---
 
         val tilNombre = findViewById<TextInputLayout>(R.id.tilNombre)
         val tilFechaNacimiento = findViewById<TextInputLayout>(R.id.tilFechaNacimiento)
@@ -90,4 +96,3 @@ class RegistroActivity : ComponentActivity() {
         }
     }
 }
-

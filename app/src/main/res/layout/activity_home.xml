@@ -20,13 +20,7 @@
             android:textColor="#2E7D32"
             android:layout_marginBottom="16dp" />
 
-        <ImageView
-            android:id="@+id/imgMascotas"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/home_mascotas"
-            android:layout_marginBottom="24dp" />
+        <!-- ImageView eliminada temporalmente para diagnóstico -->
 
         <TextView
             android:layout_width="wrap_content"

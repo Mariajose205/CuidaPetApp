@@ -1,60 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="16dp"
     app:cardElevation="4dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/imgFotoMascotaItem"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:id="@+id/imgMascotaItem"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_pet_placeholder"/>
+            android:src="@android:drawable/ic_menu_gallery"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tvNombreMascotaItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="16dp">
+            android:layout_marginStart="16dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgMascotaItem"
+            app:layout_constraintTop_toTopOf="@id/imgMascotaItem"
+            tools:text="🐶 Nombre: Bobby" />
 
-            <TextView
-                android:id="@+id/tvNombreMascotaItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nombre de la Mascota"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tvEdadMascotaItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvNombreMascotaItem"
+            app:layout_constraintTop_toBottomOf="@id/tvNombreMascotaItem"
+            tools:text="📅 Edad: 5 años" />
 
-            <TextView
-                android:id="@+id/tvRazaMascotaItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Raza"/>
+        <TextView
+            android:id="@+id/tvRazaMascotaItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvNombreMascotaItem"
+            app:layout_constraintTop_toBottomOf="@id/tvEdadMascotaItem"
+            tools:text="🐾 Raza: Golden Retriever" />
 
-            <TextView
-                android:id="@+id/tvEdadMascotaItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edad"/>
+        <TextView
+            android:id="@+id/tvPesoMascotaItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvNombreMascotaItem"
+            app:layout_constraintTop_toBottomOf="@id/tvRazaMascotaItem"
+            tools:text="⚖️ Peso: 30 kg" />
 
-            <TextView
-                android:id="@+id/tvPesoMascotaItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Peso"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -17,7 +17,7 @@ class HomeActivity : ComponentActivity() {
         val btnTuMascota = findViewById<Button>(R.id.btnTuMascota)
         val btnRecomendaciones = findViewById<Button>(R.id.btnRecomendaciones)
         val btnPerfil = findViewById<Button>(R.id.btnPerfil)
-        val btnVerRazas = findViewById<Button>(R.id.btnVerRazas) // ← NUEVO BOTÓN
+        val btnVerRazas = findViewById<Button>(R.id.btnVerRazas)
         val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
 
         btnRegistrarMascota.setOnClickListener {
@@ -41,7 +41,7 @@ class HomeActivity : ComponentActivity() {
         }
 
         btnVerRazas.setOnClickListener {
-            val intent = Intent(this, DogBreedsActivity::class.java)
+            val intent = Intent(this, DogBreedActivity::class.java)
             startActivity(intent)
         }
 
